@@ -17,4 +17,39 @@ body {
     border: 5px solid #ecf0f1;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     background-color: #000;
+
+}
+/* 适配手机屏幕的布局 */
+.controls {
+    margin-top: 20px;
+    user-select: none; /* 防止长按弹出菜单 */
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 70px;
+    height: 70px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    /* 解决手机点击延迟 */
+    touch-action: manipulation; 
+}
+
+.btn:active {
+    background-color: #2ecc71; /* 点击时变绿 */
+}
+
+#gameCanvas {
+    max-width: 90vw; /* 画布宽度不超过手机屏幕宽度的90% */
+    height: auto;
 }
