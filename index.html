@@ -2,15 +2,38 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>我的转专业面试作品：贪吃蛇</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的贪吃蛇移动端版</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-container">
         <h1>得分: <span id="score">0</span></h1>
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <p>使用方向键控制蛇的移动</p>
+        <canvas id="gameCanvas" width="300" height="300"></canvas>
+        
+        <div class="controls">
+            <div class="row"><button class="btn" onclick="move('UP')">↑</button></div>
+            <div class="row">
+                <button class="btn" onclick="move('LEFT')">←</button>
+                <button class="btn" onclick="move('DOWN')">↓</button>
+                <button class="btn" onclick="move('RIGHT')">→</button>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // 这个小脚本负责把按钮点击转化为“按键逻辑”
+        function move(dir) {
+            let key;
+            if(dir === 'LEFT') key = 37;
+            if(dir === 'UP') key = 38;
+            if(dir === 'RIGHT') key = 39;
+            if(dir === 'DOWN') key = 40;
+            // 调用 script.js 里的控制函数
+            if(typeof changeDirection === 'function') {
+                changeDirection({ keyCode: key });
+            }
+        }
+    </script>
 </body>
 </html>
