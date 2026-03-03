@@ -53,3 +53,71 @@ body {
     max-width: 90vw; /* 画布宽度不超过手机屏幕宽度的90% */
     height: auto;
 }
+/* --- 界面切换基础样式 --- */
+.main-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease; /* 界面切换时的淡入淡出 */
+}
+
+.show { opacity: 1; z-index: 10; visibility: visible; }
+.hide { opacity: 0; z-index: 0; visibility: hidden; }
+
+/* --- Logo 界面样式 --- */
+.logo-icon {
+    width: 80px; 
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+/* 模仿腾讯游戏的闪烁文字 */
+.blink-text {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ecf0f1;
+    animation: tencentBlink 1.5s infinite; /* 1.5秒无限循环闪烁 */
+}
+
+@keyframes tencentBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; } /* 闪烁到几乎透明 */
+}
+
+/* --- 动画界面样式 --- */
+.intro-video {
+    width: 100%;
+    max-width: 600px; /* 限制最大宽度，防止太大 */
+    height: auto;
+}
+
+/* --- 底部提示样式 --- */
+.start-prompt {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #f1c40f; /* 金黄色 */
+    font-size: 1.2em;
+    animation: promptBlink 1s infinite;
+    z-index: 20;
+}
+
+@keyframes promptBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
