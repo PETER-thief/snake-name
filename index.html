@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>我的贪吃蛇移动端版</title>
+    <title>MH游戏：火影贪吃蛇</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>得分: <span id="score">0</span></h1>
-        <canvas id="gameCanvas" width="300" height="300"></canvas>
-        
-        <div class="controls">
-            <div class="row"><button class="btn" onclick="move('UP')">↑</button></div>
-            <div class="row">
-                <button class="btn" onclick="move('LEFT')">←</button>
-                <button class="btn" onclick="move('DOWN')">↓</button>
-                <button class="btn" onclick="move('RIGHT')">→</button>
+    <div class="main-container">
+
+        <div id="logo-screen" class="screen show">
+            <img src="mh-logo.png" alt="MH Logo" class="logo-icon">
+            <h1 class="blink-text">MH游戏</h1>
+        </div>
+
+        <div id="animation-screen" class="screen hide">
+            <video id="intro-video" class="intro-video" preload="auto">
+                <source src="naruto-intro.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div id="game-screen" class="screen hide">
+            <h1>得分: <span id="score">0</span></h1>
+            <canvas id="gameCanvas" width="300" height="300"></canvas>
+            
+            <div class="controls">
+                <div class="row"><button class="btn" onclick="move('UP')">↑</button></div>
+                <div class="row">
+                    <button class="btn" onclick="move('LEFT')">←</button>
+                    <button class="btn" onclick="move('DOWN')">↓</button>
+                    <button class="btn" onclick="move('RIGHT')">→</button>
+                </div>
             </div>
         </div>
+
+        <div id="start-prompt" class="start-prompt hide">
+            按任意键开始游戏
+        </div>
+
     </div>
+
     <script src="script.js"></script>
-    <script>
-        // 这个小脚本负责把按钮点击转化为“按键逻辑”
-        function move(dir) {
-            let key;
-            if(dir === 'LEFT') key = 37;
-            if(dir === 'UP') key = 38;
-            if(dir === 'RIGHT') key = 39;
-            if(dir === 'DOWN') key = 40;
-            // 调用 script.js 里的控制函数
-            if(typeof changeDirection === 'function') {
-                changeDirection({ keyCode: key });
-            }
-        }
-    </script>
 </body>
 </html>
+
